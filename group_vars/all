@@ -1,0 +1,15 @@
+yum:
+  repo: <FQDN of the repo server>
+docker:
+  user: docker
+  group: docker
+  package: docker
+devops:
+  user: devops
+  group: devops
+
+
+registry: 
+  docker: 
+    repo: <FQDN of the repo server>
+    port: 5000

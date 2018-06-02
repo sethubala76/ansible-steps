@@ -1,0 +1,24 @@
+--- # Docker Config Playbook
+- name: Copying /etc/sysconfig/docker
+  template:
+    src: docker.config
+    dest: /etc/sysconfig/docker
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copying /etc/docker/daemon.json
+  template:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0644
+
+
+- name: Starting and enabling docker service
+  systemd:
+    name: docker
+    state: restarted
+    daemon_reload: yes
+    enabled: True

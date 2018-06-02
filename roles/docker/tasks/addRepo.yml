@@ -1,0 +1,33 @@
+--- #Adding necessary repos for docker
+
+- name: Adding base repo 
+  copy:
+   src: base.repo
+   dest: /etc/yum.repos.d/base.repo
+   mode: 0644
+   owner: root
+   group: root
+
+- name: Adding Dependency mirrors for base repo
+  template: 
+    src: "{{item}}.mirror"
+    dest: "/etc/yum.repos.d/{{item}}.mirror"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+     - base
+     - optional
+     - errata
+     - scbutils
+     - dell
+
+- name: Copying Docker repo
+  template:
+    src: docker.repo
+    dest: /etc/yum.repos.d/docker.repo
+    owner: root
+    group: root
+    mode: 0644
+
+
