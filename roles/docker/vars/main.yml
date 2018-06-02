@@ -3,7 +3,7 @@
 appvg: "applvg1"
 app:
   home: "/opt/app"
-edmi:
+demo:
   fs:
    -  lvname: "app"
       lvsize: "200G"
