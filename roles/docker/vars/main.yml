@@ -1,0 +1,10 @@
+---
+# vars file for docker
+appvg: "applvg1"
+app:
+  home: "/opt/app"
+edmi:
+  fs:
+   -  lvname: "app"
+      lvsize: "200G"
+      mount: "{{app.home}}"
