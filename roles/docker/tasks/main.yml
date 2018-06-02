@@ -5,8 +5,8 @@
 - include: addRepo.yml
   tags: addrepo 
 
-- include: docInstall.yml
+- include: dockerInstall.yml
   tags: [docInstall,docinstall,dockerinstall,dockerInstall]
 
-- include: docConfig.yml
+- include: dockerConfig.yml
   tags: [docConfig,docconfig,dockerconfig,dockerConfig]
