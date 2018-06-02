@@ -1,0 +1,9 @@
+--- # Playbook to install and setup docker 
+- hosts: "{{env}}" 
+  gather_facts: yes
+  become: true
+  become_method: sudo
+  connection: paramiko 
+  serial: 1
+  roles:
+    - docker 
