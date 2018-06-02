@@ -1,0 +1,41 @@
+--- #install docker
+
+- name: Creating  Groups
+  group: 
+    name: "{{docker.user}}" 
+  ignore_errors: yes
+
+- name: "Adding {{devops.user}} user to {{docker.user}} group"
+  user:
+    name: "{{devops.user}}"
+    groups: "{{docker.user}}"
+
+- name: yum-clean-metadata
+  command: yum clean all 
+  args:
+    warn: no
+
+- name: Creating /opt/app/docker directory
+  file:
+    path: /opt/app/docker
+    state: directory
+    mode: 0755
+
+- name: Creating symlink /var/lib/docker to /opt/app/docker
+  file:
+    src: /opt/app/docker
+    dest: /var/lib/docker
+    state: link
+
+- name: Installing docker with yum package
+  yum:
+    name: "{{docker.package}}" 
+    enablerepo: docker
+    state: present
+
+- name: Starting and enabling docker service
+  systemd:
+    name: docker
+    state: restarted
+    daemon_reload: yes
+    enabled: True
