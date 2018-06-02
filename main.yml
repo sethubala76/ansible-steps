@@ -1,0 +1,13 @@
+--- # tasks file for docker
+- include: filesystem.yml
+  tags: filesystem
+
+- include: addRepo.yml
+  tags: addrepo 
+
+- include: docInstall.yml
+  tags: [docInstall,docinstall,dockerinstall,dockerInstall]
+
+- include: docConfig.yml
+  tags: [docConfig,docconfig,dockerconfig,dockerConfig]
+
